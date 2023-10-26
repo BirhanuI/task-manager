@@ -13,3 +13,13 @@
 }
 
 
+.scrollable-div::-webkit-scrollbar {
+  background-color: #ffffff; /* Set the background color of the scrollbar */
+  right: 0; /* Position the scrollbar on the right of the element*/
+}
+.scrollable-div::-webkit-scrollbar-thumb {
+  background-color: #ffffff; /* Set the color of the thumb */
+}
+
+
+
