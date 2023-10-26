@@ -22,14 +22,14 @@ const Dashboard = () => {
   return (
     <div>
       <DashboardNav />
-      <div className="bg-white w-full flex justify-center items-center flex-col ">
+      <div className="bg-white w-full flex justify-center items-center flex-col lg:relative ">
         {analaysis.map((data, index) => (
-          <div className={`w-11/12`} key={data.id}>
+          <div className={`w-11/12 lg:flex lg:grow lg:gap-20 ${index==0?"lg:mt-20":""}`} key={data.id}>
             <div
               onClick={() => {
                 setI(index);
               }}
-              className={`${
+              className={`lg:grow lg:max-w-sm ${
                 i == analaysis[index].id
                   ? "text-primary-500 bg-slate-100"
                   : "hover:bg-primary-300 text-white"
@@ -37,10 +37,10 @@ const Dashboard = () => {
             >
               {data.title}
             </div>
-            <div className="overflow-hidden flex justify-center">
+            <div className="overflow-hidden lg:grow flex justify-center ">
               <div
                 className={`w-5/6 duration-700 max-w-xl ${
-                  i == analaysis[index].id ? "mt-2" : "-mt-56 sm:-mt-72"
+                  i == analaysis[index].id ? "mt-2 lg:absolute lg:top-0 lg:mt-10" : "-mt-56 sm:-mt-72 lg:hidden"
                 }`}
               >
                 <Charts />
