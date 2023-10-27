@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const WelcomePage = () => {
   return (
     <div className=" md:flex justify-center">
@@ -13,9 +14,9 @@ const WelcomePage = () => {
         Become focused, organized, and calm with Todoist. The world’s #1 task
         manager and to-do list app.
       </div>
-      <button className="text-white bg-orange-400 text-xl px-10 py-2 rounded-md mt-20 mb-10 ">
+      <Link to={"/login"}><button className="text-white bg-orange-400 text-xl px-10 py-2 rounded-md mt-20 mb-10 ">
         Login
-      </button>
+      </button></Link>
         </div>
     </div>
   );

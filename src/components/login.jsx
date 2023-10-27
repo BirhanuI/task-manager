@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import employee from "./../assets/employee.svg";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 const Login = () => {
@@ -35,10 +36,10 @@ const Login = () => {
             <p className="text-right w-full mt-5 text-orange-400 cursor-pointer">
               Forgot password?
             </p>
-          </div>
+          </div><Link to={'/admin/dashboard'}>
           <button className="text-white bg-orange-400 text-xl px-10 py-2 rounded-md mt-20 mb-10 ">
             Login
-          </button>
+          </button></Link>
         </div>
         <div className="w-1/2 hidden lg:flex">
           <img className="wa" src={employee} alt="Employee of the month svg" />

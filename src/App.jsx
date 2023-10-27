@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {Route,Routes} from 'react-router-dom'
 import Navbar from "./components/navbar";
 import WelcomePage from "./components/welcome-page";
 import Login from "./components/login";
@@ -9,9 +10,14 @@ function App() {
   return (
     <div className="bg-[url('src/assets/contour-line.svg')] h-full bg-fixed">
       <Navbar />
-    {/* <WelcomePage /> */}
-    {/* <Login /> */}
-    <Dashboard />
+    
+    <Routes>
+      <Route path="/" element={<WelcomePage />}/>
+      <Route path="/login" element={ <Login />}/>
+      <Route path="/admin/dashboard/*" element={ <Dashboard />}/>
+    </Routes>
+   
+    
       </div>
   )
 }

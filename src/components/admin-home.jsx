@@ -1,3 +1,4 @@
+import { Route, Routes ,Link} from "react-router-dom";
 import { useState } from "react";
 import { Popover } from "react-tiny-popover";
 import { FaEdit, FaTrash, FaUserPlus } from "react-icons/fa";
@@ -16,10 +17,12 @@ const Dashboard = () => {
   return (
     <div>
       <DashboardNav />
-      <AdminHome />
-      {/* <Employee /> */}
-      {/* <Tasks /> */}
-      {/* <Notification /> */}
+      <Routes>
+        <Route path={"/"} element={<AdminHome/>} />
+        <Route path={"/employee"} element={<Employee />} />
+        <Route path={"/task"} element={<Tasks />} />
+        <Route path={"/Notification"} element={<Notification />} />
+      </Routes>
     </div>
   );
 };
@@ -76,46 +79,46 @@ export const Notification = () => {
   return (
     <div className="bg-white flex">
       <div className="w-full lg:h-96 scrollable-div lg:mt-16 lg:overflow-y-scroll overflow-x-hidden">
-      <div className="scrollable-div-inside w-full flex justify-center items-center flex-col lg:relative ">
-
-      {analaysis.map((data, index) => (
-        <div
-          className={` w-11/12 lg:flex lg:grow lg:gap-20 ${
-            index == 0 ? "lg:mt-2" : ""
-          } `}
-          key={data.id}
-        >
-          <div
-            onClick={() => {
-              setI(index);
-            }}
-            className={`lg:grow lg:max-w-sm ${
-              i == analaysis[index].id
-              ? "text-primary-500 bg-slate-100"
-                : "hover:bg-primary-300 text-white"
-            } cursor-pointer   py-5 bg-primary-400 rounded-t-lg lg:rounded-lg text-center mt-2 duration-1000`}
-          >
-            {data.title}
-          </div>
-          <div className="overflow-hidden lg:grow flex justify-center ">
+        <div className="scrollable-div-inside w-full flex justify-center items-center flex-col lg:relative ">
+          {analaysis.map((data, index) => (
             <div
-              className={`flex justify-center px-5 border duration-700 w-full lg:max-w-xl ${
-                i == analaysis[index].id
-                  ? "py-2 lg:fixed lg:top-52 lg:mt-10"
-                  : "-mt-56 sm:-mt-72 lg:hidden "
-              }`}
+              className={` w-11/12 lg:flex lg:grow lg:gap-20 ${
+                index == 0 ? "lg:mt-2" : ""
+              } `}
+              key={data.id}
             >
-              <div className="lg:h-full max-w-md lg:max-w-xl">
-                <div className="text-center font-bold text-primary-400 my-5 text-2xl hidden lg:block">
-                  {data.title}
+              <div
+                onClick={() => {
+                  setI(index);
+                }}
+                className={`lg:grow lg:max-w-sm ${
+                  i == analaysis[index].id
+                    ? "text-primary-500 bg-slate-100"
+                    : "hover:bg-primary-300 text-white"
+                } cursor-pointer   py-5 bg-primary-400 rounded-t-lg lg:rounded-lg text-center mt-2 duration-1000`}
+              >
+                {data.title}
+              </div>
+              <div className="overflow-hidden lg:grow flex justify-center ">
+                <div
+                  className={`flex justify-center px-5 border duration-700 w-full lg:max-w-xl ${
+                    i == analaysis[index].id
+                      ? "py-2 lg:fixed lg:top-52 lg:mt-10"
+                      : "-mt-56 sm:-mt-72 lg:hidden "
+                  }`}
+                >
+                  <div className="lg:h-full max-w-md lg:max-w-xl">
+                    <div className="text-center font-bold text-primary-400 my-5 text-2xl hidden lg:block">
+                      {data.title}
+                    </div>
+                    <div className="lg:mb-10 text-primary-500">{data.body}</div>
+                  </div>
                 </div>
-                <div className="lg:mb-10 text-primary-500">{data.body}</div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
-      ))}
-</div></div>
+      </div>
     </div>
   );
 };
@@ -203,8 +206,8 @@ export const Employee = () => {
           <table className="text-primary-500 mt-5">
             <thead>
               <tr className="bg-primary-400 text-white">
-                {tableHeading.map((heading) => (
-                  <td className="px-5 py-3">{heading}</td>
+                {tableHeading.map((heading,index) => (
+                  <td className="px-5 py-3" key={index}>{heading}</td>
                 ))}
               </tr>
             </thead>
@@ -407,7 +410,7 @@ export const Tasks = () => {
 };
 export const DashboardNav = () => {
   const navLink = [
-    { link: "home", title: "Home" },
+    { link: "", title: "Home" },
     { link: "employee", title: "Employee" },
     { link: "task", title: "Task" },
     { link: "notification", title: "Notification" },
@@ -420,14 +423,14 @@ export const DashboardNav = () => {
       </div>
       <div className="hidden md:flex bg-primary-500">
         {navLink.map((link, index) => (
-          <span
-            key={link.link}
-            className={`cursor-pointer md:px-5 lg:px-10 py-2 mt-3 rounded-tl-xl rounded-tr-xl text-xl text-white hover:text-primary-500 hover:bg-white ${
+          <Link key={link.link} to={link.link} className=" mt-4"><span
+            
+            className={`cursor-pointer md:px-5 lg:px-10  rounded-tl-xl rounded-tr-xl text-xl text-white hover:text-primary-500 hover:bg-white ${
               index == 0 ? "ml-5" : ""
             }`}
           >
             {link.title}
-          </span>
+          </span></Link>
         ))}
       </div>
     </div>
