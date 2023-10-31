@@ -20,6 +20,12 @@
 .scrollable-div::-webkit-scrollbar-thumb {
   background-color: #ffffff; /* Set the color of the thumb */
 }
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 
 

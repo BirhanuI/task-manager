@@ -1,7 +1,5 @@
-import { Route, Routes ,Link} from "react-router-dom";
-import { useState } from "react";
-import { Popover } from "react-tiny-popover";
-import { FaEdit, FaTrash, FaUserPlus } from "react-icons/fa";
+import { Route, Routes, Link } from "react-router-dom";
+import {useState} from "react"
 import { HiOutlineMenu } from "react-icons/hi";
 import {
   Chart as ChartJS,
@@ -13,14 +11,18 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import Tasks from "./tasks";
+import Employee from "./employee";
+import AssignedTasks from "./assignedTasks";
 const Dashboard = () => {
   return (
     <div>
       <DashboardNav />
       <Routes>
-        <Route path={"/"} element={<AdminHome/>} />
+        <Route path={"/"} element={<AdminHome />} />
         <Route path={"/employee"} element={<Employee />} />
         <Route path={"/task"} element={<Tasks />} />
+        <Route path={"/task/employee"} element={<AssignedTasks />}/>
         <Route path={"/Notification"} element={<Notification />} />
       </Routes>
     </div>
@@ -122,292 +124,6 @@ export const Notification = () => {
     </div>
   );
 };
-export const Employee = () => {
-  const data = [
-    {
-      name: "berhanu",
-      age: "23",
-      address: "addis ababa",
-      phone: "0912874356",
-      role: "Frontend developer",
-      id: "1",
-    },
-    {
-      name: "berhanu",
-      age: "23",
-      address: "addis ababa",
-      phone: "0912874356",
-      role: "Frontend developer",
-      id: "1",
-    },
-    {
-      name: "berhanu",
-      age: "23",
-      address: "addis ababa",
-      phone: "0912874356",
-      role: "Frontend developer",
-      id: "1",
-    },
-    {
-      name: "berhanu",
-      age: "23",
-      address: "addis ababa",
-      phone: "0912874356",
-      role: "Frontend developer",
-      id: "1",
-    },
-    {
-      name: "berhanu",
-      age: "23",
-      address: "addis ababa",
-      phone: "0912874356",
-      role: "Frontend developer",
-      id: "1",
-    },
-    {
-      name: "berhanu",
-      age: "23",
-      address: "addis ababa",
-      phone: "0912874356",
-      role: "Frontend developer",
-      id: "1",
-    },
-    {
-      name: "berhanu",
-      age: "23",
-      address: "addis ababa",
-      phone: "0912874356",
-      role: "Frontend developer",
-      id: "1",
-    },
-    {
-      name: "berhanu",
-      age: "23",
-      address: "addis ababa",
-      phone: "0912874356",
-      role: "Frontend developer",
-      id: "1",
-    },
-  ];
-  const tableHeading = [
-    "No.",
-    "Name",
-    "Age",
-    "Address",
-    "Phone",
-    "Role",
-    "ID",
-    "",
-  ];
-  return (
-    <div>
-      <div className="bg-white overflow-x-auto md:flex justify-center flex-col items-center">
-        <div>
-          <table className="text-primary-500 mt-5">
-            <thead>
-              <tr className="bg-primary-400 text-white">
-                {tableHeading.map((heading,index) => (
-                  <td className="px-5 py-3" key={index}>{heading}</td>
-                ))}
-              </tr>
-            </thead>
-            {data.map((data, index) => (
-              <tbody key={index}>
-                <tr className={`${index % 2 == 0 ? "" : "bg-gray-100"}`}>
-                  <td className="px-5 py-2">{index + 1}</td>
-                  <td className="px-5">{data.name}</td>
-                  <td className="px-5">{data.age}</td>
-                  <td className="px-5">{data.address}</td>
-                  <td className="px-5">{data.phone}</td>
-                  <td className="px-5">{data.role}</td>
-                  <td className="px-5">{data.id}</td>
-                  <td className="flex gap-5 text-lg py-3">
-                    <FaEdit className="cursor-pointer" />
-                    <FaTrash className="text-red-500 cursor-pointer mr-2" />
-                  </td>
-                </tr>
-              </tbody>
-            ))}
-          </table>
-          <div className="flex  mt-10 justify-between">
-            <FaUserPlus
-              className="text-primary-500 text-4xl"
-              title="Add Employee"
-            />
-            <div className="flex items-start justify-around w-2/6">
-              <div>
-                Rows per page{" "}
-                <select name="No. of rows" id="">
-                  <option value="10">10</option>
-                  <option value="10">15</option>
-                  <option value="10">20</option>
-                </select>
-              </div>
-              <div>{`${"1-8"} of ${data.length}`}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-export const Tasks = () => {
-  const data = [
-    {
-      name: "berhanu",
-      age: "23",
-      address: "addis ababa",
-      phone: "0912874356",
-      role: "Frontend developer",
-      id: "1",
-    },
-    {
-      name: "berhanu",
-      age: "23",
-      address: "addis ababa",
-      phone: "0912874356",
-      role: "Frontend developer",
-      id: "2",
-    },
-    {
-      name: "berhanu",
-      age: "23",
-      address: "addis ababa",
-      phone: "0912874356",
-      role: "Frontend developer",
-      id: "3",
-    },
-    {
-      name: "berhanu",
-      age: "23",
-      address: "addis ababa",
-      phone: "0912874356",
-      role: "Frontend developer",
-      id: "4",
-    },
-    {
-      name: "berhanu",
-      age: "23",
-      address: "addis ababa",
-      phone: "0912874356",
-      role: "Frontend developer",
-      id: "5",
-    },
-    {
-      name: "berhanu",
-      age: "23",
-      address: "addis ababa",
-      phone: "0912874356",
-      role: "Frontend developer",
-      id: "6",
-    },
-    {
-      name: "berhanu",
-      age: "23",
-      address: "addis ababa",
-      phone: "0912874356",
-      role: "Frontend developer",
-      id: "7",
-    },
-    {
-      name: "berhanu",
-      age: "23",
-      address: "addis ababa",
-      phone: "0912874356",
-      role: "Frontend developer",
-      id: "8",
-    },
-  ];
-  const tableHeading = [
-    "No.",
-    "Name",
-    "Age",
-    "Address",
-    "Phone",
-    "Role",
-    "ID",
-    "",
-  ];
-  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
-  const [counter, setCounter] = useState();
-  return (
-    <div>
-      <div className="bg-white md:flex justify-center flex-col items-center">
-        <div className="overflow-x-auto   ">
-          <table className="text-primary-500 mt-5">
-            <thead>
-              <tr className="bg-primary-400 text-white">
-                {tableHeading.map((heading) => (
-                  <td className="px-5 py-3" key={heading}>
-                    {heading}
-                  </td>
-                ))}
-              </tr>
-            </thead>
-            {data.map((data, index) => (
-              <tbody key={index}>
-                <tr className={`${index % 2 == 0 ? "" : "bg-gray-100"}`}>
-                  <td className="px-5 py-2">{index + 1}</td>
-                  <td className="px-5">{data.name}</td>
-                  <td className="px-5">{data.age}</td>
-                  <td className="px-5 ">
-                    <Popover
-                      className="hidden"
-                      isOpen={isPopoverOpen}
-                      positions={["bottom", "left", "right"]}
-                      content={
-                        <div
-                          className={`${
-                            counter == data.id ? "" : "hidden"
-                          } bg-white p-5 text-primary-500 border border-primary-500 rounded-xl`}
-                        >
-                          Hi! I'm popover content.
-                        </div>
-                      }
-                    >
-                      <div
-                        onClick={() => {
-                          setIsPopoverOpen(!isPopoverOpen);
-                          setCounter(index + 1);
-                        }}
-                      >
-                        {data.address}
-                      </div>
-                    </Popover>
-                  </td>
-                  <td className="px-5">{data.phone}</td>
-                  <td className="px-5">{data.role}</td>
-                  <td className="px-5">{data.id}</td>
-                  <td className="flex gap-5 text-lg py-3">
-                    <FaEdit className="cursor-pointer" />
-                    <FaTrash className="text-red-500 cursor-pointer mr-2" />
-                  </td>
-                </tr>
-              </tbody>
-            ))}
-          </table>
-        </div>
-        <div className="flex md:w-2/4 justify-between my-10 px-5 ">
-          <FaUserPlus
-            className="text-primary-500 text-4xl"
-            title="Add Employee"
-          />
-          <div className="flex items-start  md:justify-between ">
-            <div className="mr-5">
-              Rows per page{" "}
-              <select name="No. of rows" id="">
-                <option value="10">10</option>
-                <option value="10">15</option>
-                <option value="10">20</option>
-              </select>
-            </div>
-            <div className="">{`${"1-8"} of ${data.length}`}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
 export const DashboardNav = () => {
   const navLink = [
     { link: "", title: "Home" },
@@ -423,14 +139,15 @@ export const DashboardNav = () => {
       </div>
       <div className="hidden md:flex bg-primary-500">
         {navLink.map((link, index) => (
-          <Link key={link.link} to={link.link} className=" mt-4"><span
-            
-            className={`cursor-pointer md:px-5 lg:px-10  rounded-tl-xl rounded-tr-xl text-xl text-white hover:text-primary-500 hover:bg-white ${
-              index == 0 ? "ml-5" : ""
-            }`}
-          >
-            {link.title}
-          </span></Link>
+          <Link key={link.link} to={link.link} className=" mt-4">
+            <span
+              className={`cursor-pointer md:px-5 lg:px-10  rounded-tl-xl rounded-tr-xl text-xl text-white hover:text-primary-500 hover:bg-white active:text-primary-500 active:bg-white ${
+                index == 0 ? "ml-5" : ""
+              }`}
+            >
+              {link.title}
+            </span>
+          </Link>
         ))}
       </div>
     </div>
